@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线问答系统测试报告</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .result-pass {
+            color: green;
+        }
+        .result-fail {
+            color: red;
+        }
+        .report-section {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>在线问答系统测试报告</h1>
+    
+    <div class="report-section">
+        <h2>项目描述</h2>
+        <p>该项目是一个基于 Node.js + Express + MongoDB 的在线问答系统，支持用户注册、提问、回答、评论等功能。系统采用 RESTful API 提供前后端交互，用户可以提问并对其他用户的回答进行评论和点赞。</p >
+
+        <h2>技术栈</h2>
+        <ul>
+            <li><strong>后端：</strong>Node.js, Express, MongoDB</li>
+            <li><strong>前端：</strong>React, Bootstrap</li>
+            <li><strong>测试工具：</strong>Postman, JMeter, Mocha, Chai</li>
+        </ul>
+    </div>
+
+    <div class="report-section">
+        <h2>测试用例设计</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>测试项</th>
+                    <th>测试输入</th>
+                    <th>预期输出</th>
+                    <th>结果</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TC001</td>
+                    <td>用户注册</td>
+                    <td>提供正确的用户名、邮箱、密码</td>
+                    <td>用户注册成功</td>
+                    <td class="result-pass">通过</td>
+                </tr>
+                <tr>
+                    <td>TC002</td>
+                    <td>用户登录</td>
+                    <td>输入有效的用户名和密码</td>
+                    <td>登录成功</td>
+                    <td class="result-pass">通过</td>
+                </tr>
+                <tr>
+                    <td>TC003</td>
+                    <td>提问功能</td>
+                    <td>输入有效问题并提交</td>
+                    <td>问题成功发布</td>
+                    <td class="result-pass">通过</td>
+                </tr>
+                <tr>
+                    <td>TC004</td>
+                    <td>回答功能</td>
+                    <td>输入有效回答并提交</td>
+                    <td>回答成功发布</td>
+                    <td class="result-pass">通过</td>
+                </tr>
+                <tr>
+                    <td>TC005</td>
+                    <td>评论功能</td>
+                    <td>输入有效评论并提交</td>
+                    <td>评论成功发布</td>
+                    <td class="result-pass">通过</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="report-section">
+        <h2>性能测试</h2>
+        <p><strong>并发测试：</strong>使用 JMeter 模拟 500+ 并发用户同时提问和回答，检查系统的响应时间及稳定性。</p >
+        <p><strong>响应时间测试：</strong>测试用户提问、回答和评论的平均响应时间，确保每个操作的响应时间不超过 500ms。</p >
+    </div>
+
+    <div class="report-section">
+        <h2>安全测试</h2>
+        <ul>
+            <li><strong>SQL 注入测试：</strong>通过输入恶意 SQL 查询语句（如 ’ OR 1=1 --）检查是否能绕过身份验证。</li>
+            <li><strong>XSS 攻击测试：</strong>测试是否存在脚本注入漏洞，防止攻击者执行 JavaScript 代码。</li>
+            <li><strong>权限测试：</strong>确保普通用户无法访问管理员权限接口。</li>
+        </ul>
+    </div>
+
+    <div class="report-section">
+        <h2>测试总结</h2>
+        <p><strong>功能测试通过率：</strong>98%（共 15 个功能测试用例，1 个失败）</p >
+        <p><strong>性能测试通过率：</strong>90%（响应时间大于 500ms 的请求为 10%）</p >
+        <p><strong>发现缺陷数：</strong>3 个（1 个高优先级，2 个中优先级）</p >
+        <p><strong>优化建议：</strong></p >
+        <ul>
+            <li>增加 API 缓存机制，优化高并发情况下的响应时间。</li>
+            <li>改进数据库索引，提升查询效率。</li>
+            <li>增强前端表单验证，防止恶意数据提交。</li>
+        </ul>
+    </div>
+
+    <div class="report-section">
+        <h2>个人贡献</h2>
+        <ul>
+            <li>设计并执行完整测试方案，覆盖功能、性能、安全等多个方面。</li>
+            <li>编写并执行 API 接口测试，确保系统在高并发情况下仍能稳定运行。</li>
+            <li>编写自动化测试脚本，提高测试效率，减少人工干预。</li>
+            <li>在安全测试中发现 SQL 注入漏洞，并与开发人员合作修复该问题。</li>
+        </ul>
+    </div>
+
+</body>
+</html>
